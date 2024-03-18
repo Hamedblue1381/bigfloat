@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ALTree/bigfloat"
+	"github.com/Hamedblue1381/bigfloat"
 )
 
 func TestPow(t *testing.T) {

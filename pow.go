@@ -7,7 +7,18 @@ import "math/big"
 func Pow(z *big.Float, w *big.Float) *big.Float {
 
 	if z.Sign() < 0 {
-		panic("Pow: negative base")
+		// Calculate |z|**w
+		absZ := new(big.Float).Abs(z)
+		result := Pow(absZ, w)
+
+		// Adjust sign of the result based on the exponent w
+		if w.Sign()%2 == 0 {
+			// If w is even, the result is positive
+			return result
+		} else {
+			// If w is odd, the result retains the sign of z
+			return new(big.Float).Neg(result)
+		}
 	}
 
 	// Pow(z, 0) = 1.0
